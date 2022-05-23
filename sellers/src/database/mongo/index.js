@@ -7,16 +7,13 @@ import { addShutdownHandler } from '../../utils/graceful-shutdown.js';
  */
 export const init = async () => {
   try {
-    const uri = process.env.MONGODB_URI;
-    if (!uri) {
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
       throw new Error("MONGODB_URI is not defined in environment variables.");
     }
 
     // Connect to MongoDB
-    await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
+    await mongoose.connect(mongoUri);
 
     mongoose.set('debug', true);
 

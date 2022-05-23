@@ -2,7 +2,7 @@
 import './config/env.js';
 
 // Initialize database connections
-import { mongoInit, mySqlInit } from './database/index.js';
+import { dbConnect} from './database/index.js';
 
 // Initialize optional integrations
 import { init as syncEventInit } from './utils/sync-request.js';  // For internal API sync calls
@@ -16,7 +16,7 @@ import { init as expressServer } from './utils/server.js';
 import { init as shutdownInit } from './utils/graceful-shutdown.js';
 
 // Initialize HTTP API routes
-import { init as apiInit } from './api/index.js';
+import { init as apiInit } from './api/init.js';
 
 
 (async () => {
@@ -26,8 +26,8 @@ import { init as apiInit } from './api/index.js';
     // Start Express server
     const { app, server } = await expressServer();
 
-    // Connect to MongoDB (required)
-    await mongoInit();
+    // database connect
+    await dbConnect();
 
     // Connect to MySQL (optional, uncomment if needed)
     // await mySqlInit();

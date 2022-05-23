@@ -25,12 +25,12 @@ export const init = async () => {
 
   // Start the HTTP server on the defined PORT
   const server = app.listen(process.env.PORT || 80, () => {
-    appLog.info(`✅ Server is listening on port ${process.env.PORT || 80}`);
+    appLog.info(`Server is listening on port ${process.env.PORT || 80}`);
   });
 
   // Handle server startup errors
   server.on('error', (err) => {
-    appLog.error('❌ Server failed to start:', err);
+    appLog.error('Server failed to start:', err);
     process.exit(1); // Exit the process on startup failure
   });
 
