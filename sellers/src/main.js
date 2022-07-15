@@ -2,7 +2,7 @@
 import './config/env.js';
 
 // Initialize database connections
-import { dbConnect} from './database/index.js';
+import { dbConnect} from './database/dbConnect.js';
 
 // Initialize optional integrations
 import { init as syncEventInit } from './utils/sync-request.js';  // For internal API sync calls
